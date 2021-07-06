@@ -1,6 +1,6 @@
 import { useHistory } from "react-router"
 import useProtectPage from "../../hooks/useProtectPage"
-import { goToLogout, goToPostDetails } from "../../routes/coordinator"
+import { goToLogout, goToPostCreate, goToPostDetails } from "../../routes/coordinator"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { baseUrl } from "../../parameters"
@@ -39,6 +39,8 @@ function Home() {
     return (
         <div>
             <h1>Home</h1>
+            <button onClick={() => goToLogout(history)}>Logout</button>
+            <button onClick={() => goToPostCreate(history)}>Criar Post</button>
             {posts && posts.map(post => {
 
                 return (
@@ -53,7 +55,6 @@ function Home() {
                 </div>
                 )
             })}
-            <button onClick={() => goToLogout(history)}>Logout</button>
         </div>
     )
 }
