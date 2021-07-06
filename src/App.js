@@ -32,6 +32,10 @@ function App() {
           <PostDetails/>
         </Route>
 
+        <Route>
+          <h1>Erro 404: Página não encontrada</h1>
+        </Route>
+
       </Switch>
     
     </BrowserRouter>
