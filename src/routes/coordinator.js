@@ -22,3 +22,14 @@ export const goToPostDetails = (history, id) => {
 
     history.push(`/post/${id}`)
 }
+
+export const goToLogout = (history) => {
+
+    localStorage.clear();
+    history.push("/login")
+}
+
+export const goBack = (history) => {
+
+    history.goBack()
+}
