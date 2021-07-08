@@ -3,7 +3,10 @@ import { useState } from "react"
 import { useHistory } from "react-router"
 import useUnprotectPage from "../../hooks/useUnprotectPage"
 import { baseUrl } from "../../parameters"
-import { goToHome, goToLogin } from "../../routes/coordinator"
+import { goToHome } from "../../routes/coordinator"
+import { Container, Body, Forms } from "./styled"
+import Button  from "../../components/Button"
+import Input from "../../components/Input"
 
 function Signup() {
 
@@ -38,17 +41,23 @@ function Signup() {
     }
 
     return (
-        <div>
-            <h1>Signup</h1>
-            <form>
-                <input onChange={onChange} placeholder="Nome" name="name" value={form.name}/>
-                <input onChange={onChange} placeholder="Apelido" name="nickname" value={form.nickname}/>
-                <input onChange={onChange} placeholder="Email" name="email" value={form.email}/>
-                <input onChange={onChange} placeholder="Senha" name="password" value={form.password} type="password"/>
-                <button onClick={signup}>Entrar</button>
-            </form>
-            <button onClick={() => goToLogin(history)}>Login</button>
-        </div>
+        <Container>
+            <Body>
+
+                <h1>Cadastro</h1>
+
+                <Forms>
+                    <Input onChange={onChange} placeholder="Nome" name="name" value={form.name}/>
+                    <Input onChange={onChange} placeholder="Apelido" name="nickname" value={form.nickname}/>
+                    <Input onChange={onChange} placeholder="Email" name="email" value={form.email}/>
+                    <Input onChange={onChange} placeholder="Senha" name="password" value={form.password} type="password"/>
+                    <Button onClick={signup}>Entrar</Button>
+                </Forms>
+
+                <br/>
+                <p>Já possui uma conta? <strong><a href="/login">Login</a></strong></p>
+            </Body>
+        </Container>
     )
 }
 
