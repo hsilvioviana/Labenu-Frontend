@@ -3,7 +3,10 @@ import { useState } from "react"
 import { useHistory } from "react-router"
 import useUnprotectPage from "../../hooks/useUnprotectPage"
 import { baseUrl } from "../../parameters"
-import { goToHome, goToSignup } from "../../routes/coordinator"
+import { goToHome } from "../../routes/coordinator"
+import { Container, Body, Forms } from "./styled"
+import Button  from "../../components/Button"
+import Input from "../../components/Input"
 
 function Login() {
 
@@ -39,15 +42,21 @@ function Login() {
     }
 
     return (
-        <div>
-            <h1>Login</h1>
-            <form>
-                <input onChange={onChange} placeholder="Login" name="login" value={form.login}/>
-                <input onChange={onChange} placeholder="Senha" name="password" value={form.password} type="password"/>
-                <button onClick={login}>Entrar</button>
-            </form>
-            <button onClick={() => goToSignup(history)}>Cadastro</button>
-        </div>
+        <Container>
+            <Body>
+
+                <h1>Login</h1>
+                
+                <Forms>
+                    <Input onChange={onChange} placeholder="Login" name="login" value={form.login}/>
+                    <Input onChange={onChange} placeholder="Senha" name="password" value={form.password} type="password"/>
+                    <Button onClick={login}>Entrar</Button>
+                </Forms>
+
+                <br/>
+                <p>Não possui uma conta? <strong><a href="/signup">Cadastre-se</a></strong></p>
+            </Body>
+        </Container>
     )
 }
 

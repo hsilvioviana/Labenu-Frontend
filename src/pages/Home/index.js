@@ -4,6 +4,8 @@ import { goToLogout, goToPostCreate, goToPostDetails } from "../../routes/coordi
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { baseUrl } from "../../parameters"
+import { Container, Body, Post, Forms } from "./styled"
+import Button  from "../../components/Button"
 
 
 function Home() {
@@ -37,25 +39,29 @@ function Home() {
     }
 
     return (
-        <div>
-            <h1>Home</h1>
-            <button onClick={() => goToLogout(history)}>Logout</button>
-            <button onClick={() => goToPostCreate(history)}>Criar Post</button>
-            {posts && posts.map(post => {
+        <Container>
+            <Body>
 
-                return (
-                <div>
-                    <hr/>
-                    <h3>Autor: {post.author}</h3>
-                    <h3>Título: {post.title}</h3>
-                    <h3>Postado em: {post.createdAt}</h3>
-                    <h3>Generos: {post.genres.map(genre => <p>{genre}</p>)}</h3>
-                    <h3>Postado por: {post.postedBy.nickname}</h3>
-                    <button onClick={() => goToPostDetails(history, post.id)}>Detalhes</button>
-                </div>
-                )
-            })}
-        </div>
+                <h1>Home</h1>
+                <Forms>
+                    <Button onClick={() => goToLogout(history)}>Logout</Button>
+                    <Button onClick={() => goToPostCreate(history)}>Criar Post</Button>
+                </Forms>
+                <br/>
+                {posts && posts.map(post => {
+
+                    return (
+                    <Post>
+                        <h1>{post.title}</h1>
+                        <h3>Autor: {post.author}</h3>
+                        <h3>Postado por: {post.postedBy.nickname}</h3>
+                        <h3>Postado em: {post.createdAt}</h3>
+                        <Button onClick={() => goToPostDetails(history, post.id)}>Detalhes</Button>
+                    </Post>
+                    )
+                })}
+            </Body>
+        </Container>
     )
 }
 

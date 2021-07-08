@@ -3,7 +3,10 @@ import { useState } from "react"
 import { useHistory } from "react-router"
 import useProtectPage from "../../hooks/useProtectPage"
 import { baseUrl } from "../../parameters"
-import { goBack, goToHome } from "../../routes/coordinator"
+import { goToHome } from "../../routes/coordinator"
+import { Container, Body, Forms } from "./styled"
+import Button  from "../../components/Button"
+import Input from "../../components/Input"
 
 function PostCreate() {
 
@@ -45,19 +48,22 @@ function PostCreate() {
     }
 
     return (
-        <div>
-            <h1>PostCreate</h1>
-            <form>
-                <input onChange={onChange} placeholder="Nome da Música" name="title" value={form.title}/>
-                <input onChange={onChange} placeholder="Nome do Autor" name="author" value={form.author}/>
-                <input onChange={onChange} placeholder="Data de Lançamento" name="releaseDate" value={form.releaseDate}/>
-                <input onChange={onChange} placeholder="Link" name="file" value={form.file}/>
-                <input onChange={onChange} placeholder='Gêneros, Separar com "/"' name="genres" value={form.genres}/>
-                <input onChange={onChange} placeholder="Álbum" name="album" value={form.album}/>
-                <button onClick={createPost}>Criar Post</button>
-            </form>
-            <button onClick={() => goBack(history)}>Voltar</button>
-        </div>
+        <Container>
+            <Body>
+                <h1>Criar Post</h1>
+                <Forms>
+                    <Input onChange={onChange} placeholder="Nome da Música" name="title" value={form.title}/>
+                    <Input onChange={onChange} placeholder="Nome do Autor" name="author" value={form.author}/>
+                    <Input onChange={onChange} placeholder="Data de Lançamento" name="releaseDate" value={form.releaseDate}/>
+                    <Input onChange={onChange} placeholder="Link" name="file" value={form.file}/>
+                    <Input onChange={onChange} placeholder='Gêneros, Separar com "/"' name="genres" value={form.genres}/>
+                    <Input onChange={onChange} placeholder="Álbum" name="album" value={form.album}/>
+                    <Button onClick={createPost}>Criar Post</Button>
+                </Forms>
+                <br/>
+                <a href="/">Voltar</a>
+            </Body>
+        </Container>
     )
 }
 
