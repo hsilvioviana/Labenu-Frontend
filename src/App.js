@@ -4,6 +4,7 @@ import Signup from "./pages/Signup"
 import Home from "./pages/Home"
 import PostCreate from "./pages/PostCreate"
 import PostDetails from "./pages/PostDetails"
+import Playlists from './pages/Playlists'
 
 function App() {
   
@@ -30,6 +31,10 @@ function App() {
 
         <Route exact path="/post/:id">
           <PostDetails/>
+        </Route>
+
+        <Route exact path="/playlists">
+          <Playlists/>
         </Route>
 
         <Route>
