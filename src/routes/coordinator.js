@@ -23,6 +23,16 @@ export const goToPostDetails = (history, id) => {
     history.push(`/post/${id}`)
 }
 
+export const goToPlaylists = (history) => {
+
+    history.push("/playlists")
+}
+
+export const goToPlaylistDetails = (history, id) => {
+
+    history.push(`/playlist/${id}`)
+}
+
 export const goToLogout = (history) => {
 
     localStorage.clear();

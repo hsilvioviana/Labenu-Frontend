@@ -1,6 +1,6 @@
 import { useHistory } from "react-router"
 import useProtectPage from "../../hooks/useProtectPage"
-import { goToLogout, goToPostCreate, goToPostDetails } from "../../routes/coordinator"
+import { goToLogout, goToPlaylists, goToPostCreate, goToPostDetails } from "../../routes/coordinator"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { baseUrl } from "../../parameters"
@@ -25,7 +25,7 @@ function Home() {
 
         try {
 
-            const headers = { headers: { Authorization :localStorage.getItem("token") } }
+            const headers = { headers: { Authorization: localStorage.getItem("token") } }
 
             const response = await axios.get(`${baseUrl}/musics`, headers)
 
@@ -46,6 +46,7 @@ function Home() {
                 <Forms>
                     <Button onClick={() => goToLogout(history)}>Logout</Button>
                     <Button onClick={() => goToPostCreate(history)}>Criar Post</Button>
+                    <Button onClick={() => goToPlaylists(history)}>Playlists</Button>
                 </Forms>
                 <br/>
                 {posts && posts.map(post => {
