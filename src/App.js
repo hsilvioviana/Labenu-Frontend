@@ -5,6 +5,7 @@ import Home from "./pages/Home"
 import PostCreate from "./pages/PostCreate"
 import PostDetails from "./pages/PostDetails"
 import Playlists from './pages/Playlists'
+import PlaylistDetails from './pages/PlaylistDetails'
 
 function App() {
   
@@ -35,6 +36,10 @@ function App() {
 
         <Route exact path="/playlists">
           <Playlists/>
+        </Route>
+
+        <Route exact path="/playlist/:id">
+          <PlaylistDetails/>
         </Route>
 
         <Route>

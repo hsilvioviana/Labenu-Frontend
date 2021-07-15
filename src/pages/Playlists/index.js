@@ -58,6 +58,24 @@ function Playlists() {
         }
     }
 
+    const deletePlaylist = async (playlistId) => {
+
+        try {
+
+            const headers = { headers: { Authorization: localStorage.getItem("token") } }
+
+            await axios.delete(`${baseUrl}/playlists/remove/${playlistId}`, headers)
+
+            window.alert("Playlist deletada com sucesso")
+
+            await getPlaylists()
+        }
+        catch (error) {
+
+            window.alert(error.response.data.error)
+        }
+    }
+
     return (
         <div>
             <button onClick={() => goToHome(history)}>Voltar</button>
@@ -70,7 +88,7 @@ function Playlists() {
                     <div>
                     <h1>{playlist.title}</h1>
                     <button onClick={() => goToPlaylistDetails(history, playlist.id)}>Detalhes</button>
-                    <button onClick={() => goToPlaylistDetails(history, playlist.id)}>Apagar</button>
+                    <button onClick={() => deletePlaylist(playlist.id)}>Apagar</button>
                     </div>
                 )
             })}
