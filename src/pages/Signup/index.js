@@ -3,7 +3,7 @@ import { useState } from "react"
 import { useHistory } from "react-router"
 import useUnprotectPage from "../../hooks/useUnprotectPage"
 import { baseUrl } from "../../parameters"
-import { goToHome } from "../../routes/coordinator"
+import { goToHome, goToLogin } from "../../routes/coordinator"
 import { Container, Body, Forms } from "./styled"
 import Button  from "../../components/Button"
 import Input from "../../components/Input"
@@ -55,7 +55,7 @@ function Signup() {
                 </Forms>
 
                 <br/>
-                <p>Já possui uma conta? <strong><a href="/login">Login</a></strong></p>
+                <p>Já possui uma conta? <strong onClick={() => goToLogin(history)}>Login</strong></p>
             </Body>
         </Container>
     )

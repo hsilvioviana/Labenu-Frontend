@@ -1,11 +1,12 @@
 import { useHistory } from "react-router"
 import useProtectPage from "../../hooks/useProtectPage"
-import { goBack } from "../../routes/coordinator"
+import { goBack, goToHome } from "../../routes/coordinator"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { baseUrl } from "../../parameters"
 import { useParams } from "react-router-dom"
 import { Container, Body } from "./styled"
+import jwt_decode from "jwt-decode"
 
 
 function PostDetails() {
@@ -16,6 +17,7 @@ function PostDetails() {
     const { id } = useParams()
 
     const [post, setPost] = useState({})
+    const [showDeleteButton, setShowDeleteButton] = useState(false)
     const [playlists, setPlaylists] = useState([])
     const [selectedPlaylist, setSelectedPlaylist] = useState(0)
 
@@ -34,6 +36,11 @@ function PostDetails() {
             const response = await axios.get(`${baseUrl}/musics/${id}`, headers)
 
             setPost(response.data.post)
+
+            const userRole = jwt_decode(localStorage.getItem("token")).role
+            const userId = jwt_decode(localStorage.getItem("token")).id
+
+            setShowDeleteButton(userRole === "ADMIN" || response.data.post.postedBy.id === userId)
         }
         catch (error) {
 
@@ -79,6 +86,27 @@ function PostDetails() {
         }
     }
 
+    const deletePost = async () => {
+
+        try {
+
+            if (window.confirm("Você tem certeza que quer apagar esse post?")) {
+
+                const headers = { headers: { Authorization: localStorage.getItem("token") } }
+
+                await axios.delete(`${baseUrl}/musics/remove/${id}`, headers)
+        
+                window.alert(`Post apagado com sucesso`)
+                
+                goToHome(history)
+            }
+        }
+        catch (error) {
+
+            window.alert(error.response.data.error)
+        }
+    }
+
     return (
         <Container>
             <Body>
@@ -111,7 +139,8 @@ function PostDetails() {
                     <button onClick={addMusic}>Adicionar na Playlist</button>
 
                 </form>)}
-                <a href="/">Voltar</a>
+                { showDeleteButton && <button onClick={deletePost}>Deletar Post</button>}
+                <a onClick={() => goBack(history)}>Voltar</a>
 
             </Body>
         </Container>
