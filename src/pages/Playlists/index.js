@@ -78,7 +78,7 @@ function Playlists() {
 
     return (
         <div>
-            <button onClick={() => goToHome(history)}>Voltar</button>
+            <button onClick={() => goToHome(history)}>Home</button>
             <forms>
                 <input onChange={onChange} Placeholder="Nome" name="title" value={form.title}/>
                 <button onClick={createPlaylist}>Criar</button>
