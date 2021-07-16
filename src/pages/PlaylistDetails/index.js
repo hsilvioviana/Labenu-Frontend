@@ -35,8 +35,25 @@ function PlaylistDetails() {
         }
         catch (error) {
 
-            console.log(error)
-            window.alert("Ocorreu um erro")
+            window.alert(error.response.data.error)
+        }
+    }
+
+    const removeMusic = async (musicId) => {
+
+        try {
+
+            const body = { musicId, playlistId: id }
+
+            const headers = { headers: { Authorization: localStorage.getItem("token") } }
+
+            await axios.post(`${baseUrl}/playlists/remove`, body, headers)
+    
+            await getMusics()
+        }
+        catch (error) {
+
+            window.alert(error.response.data.error)
         }
     }
 
@@ -49,6 +66,7 @@ function PlaylistDetails() {
                     <div>
                         <h3>{music.author} / {music.title}</h3>
                         <button onClick={() => goToPostDetails(history, music.id)}>Detalhes</button>
+                        <button onClick={() => removeMusic(music.id)}>Remover</button>
                     </div>
                 )
             }) }

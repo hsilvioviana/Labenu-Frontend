@@ -16,11 +16,14 @@ function PostDetails() {
     const { id } = useParams()
 
     const [post, setPost] = useState({})
+    const [playlists, setPlaylists] = useState([])
+    const [selectedPlaylist, setSelectedPlaylist] = useState(0)
 
     useEffect( async () => {
 
         await getPost()
-    })
+        await getPlaylists()
+    }, [])
 
     const getPost = async () => {
 
@@ -37,6 +40,43 @@ function PostDetails() {
             goBack(history)
         }
         
+    }
+
+    const getPlaylists = async () => {
+
+        const headers = { headers: { Authorization: localStorage.getItem("token") } }
+
+        const response = await axios.get(`${baseUrl}/playlists`, headers)
+
+        setPlaylists(response.data.playlists)
+    }
+
+    const selectPlaylist = (event) => {
+
+        setSelectedPlaylist(event.target.selectedIndex)
+    }
+
+    const addMusic = async (event) => {
+
+        event.preventDefault()
+
+        const playlistId = playlists[selectedPlaylist].id
+        const playlistTitle = playlists[selectedPlaylist].title
+
+        try {
+
+            const body = { musicId: id, playlistId }
+
+            const headers = { headers: { Authorization: localStorage.getItem("token") } }
+
+            await axios.post(`${baseUrl}/playlists/add`, body, headers)
+    
+            window.alert(`Música adicionada na playlist "${playlistTitle}"`)
+        }
+        catch (error) {
+
+            window.alert(error.response.data.error)
+        }
     }
 
     return (
@@ -58,6 +98,19 @@ function PostDetails() {
                     )}
 
                 <br/>
+
+                {playlists.length > 0 && (
+                <form>
+
+                    <select onChange={selectPlaylist}>
+                        {playlists.map(playlist => {
+                            return <option value={playlist.id}>{playlist.title}</option>
+                        })}
+                    </select>
+
+                    <button onClick={addMusic}>Adicionar na Playlist</button>
+
+                </form>)}
                 <a href="/">Voltar</a>
 
             </Body>
