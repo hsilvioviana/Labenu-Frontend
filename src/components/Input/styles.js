@@ -1,5 +1,6 @@
-import styled, { css } from "styled-components";
-import colors from "../../styles/colors";
+import styled, { css } from "styled-components"
+import colors from "../../styles/colors"
+
 
 export const Container = styled.div`
   border-radius: 10px;
@@ -56,4 +57,4 @@ export const Container = styled.div`
   svg {
     margin-right: 18px;
   }
-`;
+`

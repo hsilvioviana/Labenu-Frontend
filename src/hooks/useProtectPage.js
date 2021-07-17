@@ -1,4 +1,4 @@
- import { useEffect } from "react"
+import { useEffect } from "react"
 import { useHistory } from "react-router"
 import { goToLogin } from "../routes/coordinator"
 

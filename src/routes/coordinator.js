@@ -35,7 +35,7 @@ export const goToPlaylistDetails = (history, id) => {
 
 export const goToLogout = (history) => {
 
-    localStorage.clear();
+    localStorage.clear()
     history.push("/login")
 }
 

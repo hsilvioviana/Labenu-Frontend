@@ -1,14 +1,14 @@
-import { Switch, Route, BrowserRouter } from 'react-router-dom'
+import { Switch, Route, BrowserRouter } from "react-router-dom"
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import Home from "./pages/Home"
 import PostCreate from "./pages/PostCreate"
 import PostDetails from "./pages/PostDetails"
-import Playlists from './pages/Playlists'
-import PlaylistDetails from './pages/PlaylistDetails'
-import Footer from './components/Footer'
-import Header from './components/Header'
-import { goToHome, goToLogout, goToPlaylists, goToPostCreate } from './routes/coordinator'
+import Playlists from "./pages/Playlists"
+import PlaylistDetails from "./pages/PlaylistDetails"
+import Footer from "./components/Footer"
+import Header from "./components/Header"
+import { goToHome, goToLogout, goToPlaylists, goToPostCreate } from "./routes/coordinator"
 
 
 function App() {
@@ -68,4 +68,4 @@ function App() {
   )
 }
 
-export default App;
+export default App

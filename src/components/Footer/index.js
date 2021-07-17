@@ -1,4 +1,4 @@
-import { FooterBox } from './styles'
+import { FooterBox } from "./styles"
 
 
 export default function Footer() {

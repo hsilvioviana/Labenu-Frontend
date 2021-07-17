@@ -1,8 +1,9 @@
-import { Form } from "@unform/web";
-import styled from "styled-components";
-import Background from "../../assets/background.jpg";
-import colors from "../../styles/colors";
-import fonts from "../../styles/fonts";
+import { Form } from "@unform/web"
+import styled from "styled-components"
+import Background from "../../assets/background.jpg"
+import colors from "../../styles/colors"
+import fonts from "../../styles/fonts"
+
 
 export const Container = styled.div`
   position: fixed;
@@ -16,7 +17,7 @@ export const Container = styled.div`
   background-image: url(${Background});
   background-size: cover;
   background-repeat: no-repeat;
-`;
+`
 
 export const Body = styled.div`
   display: flex;
@@ -50,7 +51,7 @@ export const Body = styled.div`
     border-radius: 30px !important;
     margin-right: 30px !important;
   }
-`;
+`
 
 export const Forms = styled(Form)`
   display: flex;
@@ -63,7 +64,7 @@ export const Forms = styled(Form)`
     color: ${colors.blue};
     ${fonts[400]};
   }
-`;
+`
 
 export const Coordinator = styled.u`
   color: blue;
