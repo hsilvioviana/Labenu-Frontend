@@ -1,6 +1,7 @@
-import styled from "styled-components";
-import { shade } from "polished";
-import colors from "../../styles/colors";
+import styled from "styled-components"
+import { shade } from "polished"
+import colors from "../../styles/colors"
+
 
 export const Container = styled.button`
   background-color: ${colors.purple};
@@ -17,4 +18,4 @@ export const Container = styled.button`
   &:hover {
     background-color: ${shade(0.1, `${colors.purple}`)};
   }
-`;
+`

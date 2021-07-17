@@ -8,6 +8,7 @@ import { Container, Body, Forms, Coordinator } from "./styles"
 import Button  from "../../components/Button"
 import Input from "../../components/Input"
 
+
 function PostCreate() {
 
     useProtectPage()
@@ -50,7 +51,9 @@ function PostCreate() {
     return (
         <Container>
             <Body>
+
                 <h1>Criar Post</h1>
+
                 <Forms>
                     <Input onChange={onChange} placeholder="Nome da Música" name="title" value={form.title}/>
                     <Input onChange={onChange} placeholder="Nome do Autor" name="author" value={form.author}/>
@@ -60,8 +63,11 @@ function PostCreate() {
                     <Input onChange={onChange} placeholder="Álbum" name="album" value={form.album}/>
                     <Button onClick={createPost}>Criar Post</Button>
                 </Forms>
+
                 <br/>
+
                 <Coordinator onClick={() => goBack(history)}>Voltar</Coordinator>
+
             </Body>
         </Container>
     )

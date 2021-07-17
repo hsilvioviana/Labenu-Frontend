@@ -130,22 +130,25 @@ function PostDetails() {
                 <br/>
 
                 <Forms>
-                {playlists.length > 0 && (
-                <Select>
+                    {playlists.length > 0 && (
+                    <Select>
 
-                    <select onChange={selectPlaylist}>
-                        {playlists.map(playlist => {
-                            return <option value={playlist.id}>{playlist.title}</option>
-                        })}
-                    </select>
+                        <select onChange={selectPlaylist}>
+                            {playlists.map(playlist => {
+                                return <option value={playlist.id}>{playlist.title}</option>
+                            })}
+                        </select>
 
-                    <Button onClick={addMusic}>Adicionar na Playlist</Button>
+                        <Button onClick={addMusic}>Adicionar na Playlist</Button>
 
-                </Select>)}
-                { showDeleteButton && <Button onClick={deletePost}>Deletar Post</Button>}
+                    </Select>)}
+                    { showDeleteButton && <Button onClick={deletePost}>Deletar Post</Button>}
                 </Forms>
+
                 <br/>
+
                 <Coordinator onClick={() => goBack(history)}>Voltar</Coordinator>
+                
             </Body>
         </Container>
     )

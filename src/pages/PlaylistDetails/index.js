@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router-dom"
 import useProtectPage from "../../hooks/useProtectPage"
 import { baseUrl } from "../../parameters"
-import { goToPlaylists, goToPostDetails } from "../../routes/coordinator"
+import { goToPostDetails } from "../../routes/coordinator"
 import { Post, Posts } from "./styles"
 import Button  from "../../components/Button"
 
@@ -34,11 +34,10 @@ function PlaylistDetails() {
     
             setTitle(response.data.title)
             setMusics(response.data.musics)
-            console.log(response.data.musics)
         }
         catch (error) {
 
-            window.alert(error)
+            window.alert(error.response.data.error)
         }
     }
 

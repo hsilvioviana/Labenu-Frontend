@@ -1,6 +1,6 @@
 import { useHistory } from "react-router"
 import useProtectPage from "../../hooks/useProtectPage"
-import { goToLogout, goToPlaylists, goToPostCreate, goToPostDetails } from "../../routes/coordinator"
+import { goToLogout, goToPostDetails } from "../../routes/coordinator"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { baseUrl } from "../../parameters"
@@ -89,7 +89,6 @@ function Home() {
         return postsFiltrados
     }
 
-
     const postsFiltrados = filter(posts)
 
     return (
@@ -102,22 +101,24 @@ function Home() {
                     <Input onChange={onChange} placeholder="Artista" name="artist" value={form.artist}/>
                     <Input onChange={onChange} placeholder="Gênero" name="genre" value={form.genre}/>
                 </Forms>
+
                 <br/>
 
                 <Posts>
-                {postsFiltrados.length > 0 && postsFiltrados.map(post => {
+                    {postsFiltrados.length > 0 && postsFiltrados.map(post => {
 
-                    return (
-                    <Post>
-                        <h1>{post.title}</h1>
-                        <h3>Autor: {post.author}</h3>
-                        <h3>Postado por: {post.postedBy.nickname}</h3>
-                        <h3>Postado em: {post.createdAt}</h3>
-                        <Button onClick={() => goToPostDetails(history, post.id)}>Detalhes</Button>
-                    </Post>
-                    )
-                })}
+                        return (
+                        <Post>
+                            <h1>{post.title}</h1>
+                            <h3>Autor: {post.author}</h3>
+                            <h3>Postado por: {post.postedBy.nickname}</h3>
+                            <h3>Postado em: {post.createdAt}</h3>
+                            <Button onClick={() => goToPostDetails(history, post.id)}>Detalhes</Button>
+                        </Post>
+                        )
+                    })}
                 </Posts>
+
             </div>
     )
 }
