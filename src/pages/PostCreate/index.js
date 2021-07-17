@@ -4,7 +4,7 @@ import { useHistory } from "react-router"
 import useProtectPage from "../../hooks/useProtectPage"
 import { baseUrl } from "../../parameters"
 import { goBack, goToHome } from "../../routes/coordinator"
-import { Container, Body, Forms } from "./styled"
+import { Container, Body, Forms, Coordinator } from "./styles"
 import Button  from "../../components/Button"
 import Input from "../../components/Input"
 
@@ -61,7 +61,7 @@ function PostCreate() {
                     <Button onClick={createPost}>Criar Post</Button>
                 </Forms>
                 <br/>
-                <a onClick={() => goBack(history)}>Voltar</a>
+                <Coordinator onClick={() => goBack(history)}>Voltar</Coordinator>
             </Body>
         </Container>
     )

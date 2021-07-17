@@ -4,7 +4,7 @@ import { goToLogout, goToPlaylists, goToPostCreate, goToPostDetails } from "../.
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { baseUrl } from "../../parameters"
-import { Container, Body, Post, Forms } from "./styled"
+import { Post, Posts, Forms } from "./styles"
 import Button  from "../../components/Button"
 import Input from "../../components/Input"
 
@@ -93,21 +93,18 @@ function Home() {
     const postsFiltrados = filter(posts)
 
     return (
-        <Container>
-            <Body>
+            <div>
 
-                <h1>Home</h1>
+                <h1>Filtrar por:</h1>
 
                 <Forms>
-                    <Button onClick={() => goToLogout(history)}>Logout</Button>
-                    <Button onClick={() => goToPostCreate(history)}>Criar Post</Button>
-                    <Button onClick={() => goToPlaylists(history)}>Playlists</Button>
                     <Input onChange={onChange} placeholder="Álbum" name="album" value={form.album}/>
                     <Input onChange={onChange} placeholder="Artista" name="artist" value={form.artist}/>
                     <Input onChange={onChange} placeholder="Gênero" name="genre" value={form.genre}/>
                 </Forms>
                 <br/>
 
+                <Posts>
                 {postsFiltrados.length > 0 && postsFiltrados.map(post => {
 
                     return (
@@ -120,8 +117,8 @@ function Home() {
                     </Post>
                     )
                 })}
-            </Body>
-        </Container>
+                </Posts>
+            </div>
     )
 }
 

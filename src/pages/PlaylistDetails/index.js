@@ -4,6 +4,8 @@ import { useHistory, useParams } from "react-router-dom"
 import useProtectPage from "../../hooks/useProtectPage"
 import { baseUrl } from "../../parameters"
 import { goToPlaylists, goToPostDetails } from "../../routes/coordinator"
+import { Post, Posts } from "./styles"
+import Button  from "../../components/Button"
 
 
 function PlaylistDetails() {
@@ -32,10 +34,11 @@ function PlaylistDetails() {
     
             setTitle(response.data.title)
             setMusics(response.data.musics)
+            console.log(response.data.musics)
         }
         catch (error) {
 
-            window.alert(error.response.data.error)
+            window.alert(error)
         }
     }
 
@@ -59,17 +62,23 @@ function PlaylistDetails() {
 
     return (
         <div>
-            <button onClick={() => goToPlaylists(history)}>Voltar</button>
+
             <h1>{title}</h1>
-            { musics && musics.map(music => {
-                return (
-                    <div>
-                        <h3>{music.author} / {music.title}</h3>
-                        <button onClick={() => goToPostDetails(history, music.id)}>Detalhes</button>
-                        <button onClick={() => removeMusic(music.id)}>Remover</button>
-                    </div>
-                )
-            }) }
+
+                <Posts>
+                    {musics && musics.map(music => {
+
+                        return (
+                        <Post>
+                            <h1>{music.title}</h1>
+                            <h3>Autor: {music.author}</h3>
+                            <h3>Postado em: {music.createdAt}</h3>
+                            <Button onClick={() => goToPostDetails(history, music.id)}>Detalhes</Button>
+                            <Button onClick={() => removeMusic(music.id)}>Remover</Button>
+                        </Post>
+                        )
+                    })}
+                </Posts>
         </div>
     )
 }

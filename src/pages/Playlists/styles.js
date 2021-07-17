@@ -32,16 +32,6 @@ export const Body = styled.div`
     ${fonts[700]};
     margin: 30px 50px;
   }
-  > div {
-    color: ${colors.blue};
-    ${fonts[400]};
-    margin: 20px 65px;
-    font-weight: 400;
-    > a {
-      margin-left: 5px;
-      color: blue;
-    }
-  }
   overflow: auto;
   -ms-overflow-style: none;
   ::-webkit-scrollbar-track {
@@ -75,10 +65,27 @@ export const Forms = styled(Form)`
   }
 `;
 
-export const Post = styled.div`
+export const Collections = styled.div`
+margin: 100px 0px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+min-height: 74vh;`
+
+export const Collection = styled.div`
   color: black;
   border: 2px solid black;
   border-radius: 30px;
   margin: 10px;
-  padding: 20px;
+  padding: 80px 70px;
+  h1 {
+    text-align: center;
+  }
 `;
+
+export const Coordinator = styled.u`
+  color: blue;
+  &:hover {
+    cursor: pointer;
+  }
+`

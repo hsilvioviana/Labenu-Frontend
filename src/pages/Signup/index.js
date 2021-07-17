@@ -4,7 +4,7 @@ import { useHistory } from "react-router"
 import useUnprotectPage from "../../hooks/useUnprotectPage"
 import { baseUrl } from "../../parameters"
 import { goToHome, goToLogin } from "../../routes/coordinator"
-import { Container, Body, Forms } from "./styled"
+import { Container, Body, Forms, Coordinator } from "./styles"
 import Button  from "../../components/Button"
 import Input from "../../components/Input"
 
@@ -55,7 +55,8 @@ function Signup() {
                 </Forms>
 
                 <br/>
-                <p>Já possui uma conta? <strong onClick={() => goToLogin(history)}>Login</strong></p>
+                <p>Já possui uma conta? <strong onClick={() => goToLogin(history)}>
+                    <Coordinator>Login</Coordinator></strong></p>
             </Body>
         </Container>
     )

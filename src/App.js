@@ -6,6 +6,10 @@ import PostCreate from "./pages/PostCreate"
 import PostDetails from "./pages/PostDetails"
 import Playlists from './pages/Playlists'
 import PlaylistDetails from './pages/PlaylistDetails'
+import Footer from './components/Footer'
+import Header from './components/Header'
+import { goToHome, goToLogout, goToPlaylists, goToPostCreate } from './routes/coordinator'
+
 
 function App() {
   
@@ -23,6 +27,11 @@ function App() {
         </Route>
 
         <Route exact path="/">
+          <Header 
+          b1={{name: "Playlists", function: goToPlaylists}}
+          b2={{name: "Criar Post", function: goToPostCreate}}
+          b3={{name: "Logout", function: goToLogout}}
+          />
           <Home/>
         </Route>
 
@@ -35,10 +44,16 @@ function App() {
         </Route>
 
         <Route exact path="/playlists">
+          <Header 
+          b1={{name: "Músicas", function: goToHome}}
+          />
           <Playlists/>
         </Route>
 
         <Route exact path="/playlist/:id">
+          <Header 
+          b1={{name: "Playlists", function: goToPlaylists}}
+          />
           <PlaylistDetails/>
         </Route>
 
@@ -48,6 +63,7 @@ function App() {
 
       </Switch>
     
+      <Footer/>
     </BrowserRouter>
   )
 }
