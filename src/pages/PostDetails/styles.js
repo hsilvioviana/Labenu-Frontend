@@ -64,3 +64,18 @@ export const Forms = styled(Form)`
     ${fonts[400]};
   }
 `;
+
+export const Select = styled.form`
+display: flex;
+flex-direction: column;
+select {
+  height: 50px;
+}
+`
+
+export const Coordinator = styled.u`
+  color: blue;
+  &:hover {
+    cursor: pointer;
+  }
+`

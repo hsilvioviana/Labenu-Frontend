@@ -3,7 +3,10 @@ import { useEffect, useState } from "react"
 import { useHistory } from "react-router"
 import useProtectPage from "../../hooks/useProtectPage"
 import { baseUrl } from "../../parameters"
-import { goToHome, goToPlaylistDetails } from "../../routes/coordinator"
+import { goToPlaylistDetails } from "../../routes/coordinator"
+import { Forms, Collection, Collections } from "./styles"
+import Button  from "../../components/Button"
+import Input from "../../components/Input"
 
 function Playlists() {
 
@@ -62,6 +65,8 @@ function Playlists() {
 
         try {
 
+            if (window.confirm("Você tem certeza que quer apagar essa playlist?")) {
+
             const headers = { headers: { Authorization: localStorage.getItem("token") } }
 
             await axios.delete(`${baseUrl}/playlists/remove/${playlistId}`, headers)
@@ -69,6 +74,7 @@ function Playlists() {
             window.alert("Playlist deletada com sucesso")
 
             await getPlaylists()
+            }
         }
         catch (error) {
 
@@ -78,20 +84,25 @@ function Playlists() {
 
     return (
         <div>
-            <button onClick={() => goToHome(history)}>Home</button>
-            <forms>
-                <input onChange={onChange} Placeholder="Nome" name="title" value={form.title}/>
-                <button onClick={createPlaylist}>Criar</button>
-            </forms>
-            {playlists && playlists.map(playlist => {
-                return(
-                    <div>
-                    <h1>{playlist.title}</h1>
-                    <button onClick={() => goToPlaylistDetails(history, playlist.id)}>Detalhes</button>
-                    <button onClick={() => deletePlaylist(playlist.id)}>Apagar</button>
-                    </div>
-                )
-            })}
+
+            <h1>Criar Playlist</h1>
+
+            <Forms>
+                <Input onChange={onChange} placeholder="Nome" name="title" value={form.title}/>
+                <Button onClick={createPlaylist}>Criar</Button>
+            </Forms>
+
+            <Collections>
+                {playlists && playlists.map(playlist => {
+                    return(
+                        <Collection>
+                        <h1>{playlist.title}</h1>
+                        <Button onClick={() => goToPlaylistDetails(history, playlist.id)}>Detalhes</Button>
+                        <Button onClick={() => deletePlaylist(playlist.id)}>Apagar</Button>
+                        </Collection>
+                    )
+                })}
+            </Collections>
         </div>
     )
 }

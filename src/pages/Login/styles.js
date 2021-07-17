@@ -23,7 +23,7 @@ export const Body = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 600px;
+  height: 500px;
   width: 450px;
   background: white;
   border-radius: 30px;
@@ -64,3 +64,10 @@ export const Forms = styled(Form)`
     ${fonts[400]};
   }
 `;
+
+export const Coordinator = styled.u`
+  color: blue;
+  &:hover {
+    cursor: pointer;
+  }
+`

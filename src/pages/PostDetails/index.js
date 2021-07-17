@@ -5,8 +5,10 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import { baseUrl } from "../../parameters"
 import { useParams } from "react-router-dom"
-import { Container, Body } from "./styled"
+import { Container, Body, Coordinator, Select } from "./styles"
+import Button  from "../../components/Button"
 import jwt_decode from "jwt-decode"
+import { Forms } from "../Signup/styles"
 
 
 function PostDetails() {
@@ -127,8 +129,9 @@ function PostDetails() {
 
                 <br/>
 
+                <Forms>
                 {playlists.length > 0 && (
-                <form>
+                <Select>
 
                     <select onChange={selectPlaylist}>
                         {playlists.map(playlist => {
@@ -136,12 +139,13 @@ function PostDetails() {
                         })}
                     </select>
 
-                    <button onClick={addMusic}>Adicionar na Playlist</button>
+                    <Button onClick={addMusic}>Adicionar na Playlist</Button>
 
-                </form>)}
-                { showDeleteButton && <button onClick={deletePost}>Deletar Post</button>}
-                <a onClick={() => goBack(history)}>Voltar</a>
-
+                </Select>)}
+                { showDeleteButton && <Button onClick={deletePost}>Deletar Post</Button>}
+                </Forms>
+                <br/>
+                <Coordinator onClick={() => goBack(history)}>Voltar</Coordinator>
             </Body>
         </Container>
     )
